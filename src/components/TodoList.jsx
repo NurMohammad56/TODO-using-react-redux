@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import { TodoDeleteAlart } from "../../components/TodoDeleteAlart";
-import { TodoEditAlart } from "../../components/TodoEditAlart";
+import { TodoDeleteAlart } from "./TodoDeleteAlart";
+import { TodoEditAlart } from "./TodoEditAlart";
 
 const TodoList = () => {
   const taskItem = useSelector((state) => state.todo.value);
@@ -27,7 +27,7 @@ const TodoList = () => {
                     <td>{item}</td>
                     <td>
                       <button
-                        onClick={() => TodoEditAlart(i)}
+                        onClick={() => TodoEditAlart(i, item)}
                         className="btn btn-sm btn-success"
                       >
                         Edit
@@ -35,7 +35,9 @@ const TodoList = () => {
                     </td>
                     <td>
                       <button
-                        onClick={() => TodoDeleteAlart(i)}
+                        onClick={() => {
+                          TodoDeleteAlart(i);
+                        }}
                         className="btn btn-sm btn-danger"
                       >
                         Remove
